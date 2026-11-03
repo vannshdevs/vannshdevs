@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Clean professional light theme with a deep blue accent */
+    --background: 210 33% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 80% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 30% 94%;
+    --secondary-foreground: 222 40% 20%;
+
+    --muted: 214 25% 94%;
+    --muted-foreground: 222 12% 45%;
+
+    --accent: 214 60% 92%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 222 80% 46%;
+
+    --radius: 0.75rem;
+
+    --shadow-card: 0 1px 2px hsl(222 47% 11% / 0.06), 0 8px 24px hsl(222 47% 11% / 0.06);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme: deep navy background with the same blue accent */
+    --background: 222 47% 8%;
+    --foreground: 210 33% 96%;
+
+    --card: 222 40% 12%;
+    --card-foreground: 210 33% 96%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 33% 96%;
+
+    --primary: 217 90% 60%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 222 25% 18%;
+    --secondary-foreground: 210 20% 88%;
+
+    --muted: 222 25% 16%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 222 35% 20%;
+    --accent-foreground: 210 33% 96%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 20% 22%;
+    --input: 222 20% 22%;
+    --ring: 217 90% 60%;
+
+    --shadow-card: 0 1px 2px hsl(222 47% 3% / 0.4), 0 8px 24px hsl(222 47% 3% / 0.4);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+
+  /* Display font for headings */
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Work Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+@layer utilities {
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}
+
+/* Theme-change reveal: the new theme expands as a circle from the toggle button */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Keep anchored sections clear of the fixed navbar when scrolled to */
+section[id] {
+  scroll-margin-top: 4rem;
+}
